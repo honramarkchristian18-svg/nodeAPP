@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Full Stack Node App</title>
+</head>
+<body>
+<h1>Welcome to My Full-Stack Website</h1>
+<button id="btn">Check Server Status</button>
+<p id="output"></p>
+<script>
+
+document.getElementById('btn').addEventListener('click', async () => {
+const res = await fetch('/api/health');
+const data = await res.json();
+document.getElementById('output').innerText = data.status;
+});
+</script>
+</body>
+</html>
