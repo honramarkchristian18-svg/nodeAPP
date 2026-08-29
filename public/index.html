@@ -2,19 +2,138 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Full Stack Node App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Irosin | Local Tourism</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#075947;--green2:#0d6b54;--lime:#78bd45;
+  --dark:#12352f;--text:#20333b;--light:#f7faf8;
+}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:#fff}
+a{text-decoration:none;color:inherit}
+.topbar{height:38px;background:#075447;color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 4.3%;font-size:13px}
+.top-left,.social{display:flex;gap:28px;align-items:center}
+.nav{height:96px;background:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 4.3%;box-shadow:0 1px 8px #00000010;position:relative;z-index:5}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:58px;height:58px;border-radius:50%;background:linear-gradient(145deg,#9be0f0,#f6c84b 48%,#277a61);display:flex;align-items:center;justify-content:center;font-size:27px}
+.logo small{display:block;font-size:11px;letter-spacing:2px;color:#34514a}
+.logo strong{display:block;font-size:27px;line-height:25px;color:#075947}
+.logo em{font-family:cursive;font-size:13px;color:#6a716d}
+.navlinks{display:flex;align-items:center;gap:36px;font-size:14px;font-weight:600}
+.navlinks a:hover{color:var(--green)}
+.trip{background:var(--green);color:#fff;padding:13px 22px;border-radius:5px;font-weight:bold}
+.hero{height:465px;background:
+linear-gradient(90deg,rgba(0,45,66,.86),rgba(0,48,70,.35) 48%,rgba(0,0,0,.05)),
+url("a_full_page_desktop_website_mockup_hero_landing.png") center 30%/cover;
+position:relative;color:#fff;display:flex;align-items:center;padding:0 4.7%}
+.hero-copy{max-width:520px}
+.script{font-family:cursive;font-size:42px}
+.hero h1{font-size:76px;line-height:.9;letter-spacing:2px;margin:4px 0;color:#fff}
+.hero h2{font-family:cursive;font-weight:normal;font-size:34px;color:#9bdd55;margin:10px 0}
+.hero p{font-size:16px;line-height:1.5;max-width:390px}
+.buttons{display:flex;gap:13px;margin-top:24px}
+.btn{padding:13px 22px;border-radius:5px;font-weight:bold;font-size:13px}
+.primary{background:#4d9d42}.outline{border:1px solid #fff}
+.searchbox{position:absolute;left:16.5%;right:16.5%;bottom:-40px;height:90px;background:#fff;border-radius:12px;box-shadow:0 8px 28px #0002;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr auto;align-items:center;padding:12px 20px;color:#20333b}
+.search-item{padding:0 22px;border-right:1px solid #ddd}
+.search-item label{display:block;font-weight:bold;font-size:13px;margin-bottom:8px}
+.search-item span{color:#788188;font-size:13px}
+.search-btn{background:var(--green);color:#fff;border:0;border-radius:5px;padding:15px 28px;font-weight:bold;margin-left:18px}
+.destinations{padding:102px 4.6% 55px;background:#fff;display:grid;grid-template-columns:280px 1fr;gap:34px}
+.kicker{color:#4b9144;font-size:12px;font-weight:bold;letter-spacing:.5px;margin-bottom:16px}
+.destinations h2{font-size:29px;line-height:1.2;margin-bottom:15px}
+.destinations p{font-size:14px;line-height:1.7;color:#69757a;margin-bottom:20px}
+.view{display:inline-block;background:#3f8e3e;color:#fff;padding:11px 17px;border-radius:4px;font-size:12px;font-weight:bold}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}
+.card{height:216px;border-radius:9px;overflow:hidden;position:relative;color:#fff;background-size:cover;background-position:center;box-shadow:0 4px 12px #0002}
+.card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,#000b)}
+.c1{background-image:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80")}
+.c2{background-image:url("https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=700&q=80")}
+.c3{background-image:url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=700&q=80")}
+.c4{background-image:url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80")}
+.c5{background-image:url("https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?auto=format&fit=crop&w=700&q=80")}
+.card-content{position:absolute;z-index:2;bottom:15px;left:14px}
+.card h3{font-size:16px;margin-bottom:6px}
+.card small{font-size:11px}
+.why{background:#f5f8f5;padding:40px 4.6%;display:grid;grid-template-columns:220px repeat(5,1fr);gap:30px;align-items:center}
+.why h2{font-size:24px;line-height:1.25;color:#104b40}
+.feature{text-align:left}
+.icon{font-size:34px;margin-bottom:10px}
+.feature h3{font-size:13px;color:#0c5749;margin-bottom:7px}
+.feature p{font-size:12px;line-height:1.5;color:#6d7675}
+.footer{background:#073f35;color:#fff;padding:28px 4.6%;display:flex;justify-content:space-between;font-size:12px}
+@media(max-width:1000px){
+ .navlinks{gap:15px}.cards{grid-template-columns:repeat(3,1fr)}
+ .why{grid-template-columns:1fr 1fr 1fr}.searchbox{left:5%;right:5%}
+}
+</style>
 </head>
 <body>
-<h1> Welcome to My Full-Stack Website</h1>
-<button id="btn">Check Server Status</button>
-<p id="output"></p>
-<script>
 
-document.getElementById('btn').addEventListener('click', async () => {
-const res = await fetch('/api/health');
-const data = await res.json();
-document.getElementById('output').innerText = data.status;
-});
-</script>
+<div class="topbar">
+  <div class="top-left"><span>📍 Irosin, Sorsogon, Philippines</span><span>✉ info@irosintourism.ph</span><span>☎ (052) 123 4567</span></div>
+  <div class="social"><span>f</span><span>◎</span><span>▶</span><span>♪</span></div>
+</div>
+
+<nav class="nav">
+  <a class="logo" href="#">
+    <div class="logo-mark">🏔️</div>
+    <div><small>DISCOVER</small><strong>IROSlN</strong><em>Local Wonders. Lasting Memories.</em></div>
+  </a>
+  <div class="navlinks">
+    <a href="#">HOME</a><a href="#about">ABOUT IROSIN</a><a href="#destinations">DESTINATIONS⌄</a>
+    <a href="#things">THINGS TO DO⌄</a><a href="#events">EVENTS</a><a href="#blog">BLOG</a><a href="#contact">CONTACT</a>
+  </div>
+  <a class="trip" href="#destinations">👜 PLAN YOUR TRIP</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-copy">
+    <div class="script">Welcome to</div>
+    <h1>IROSlN</h1>
+    <h2>Sorsogon, Philippines</h2>
+    <p>Where natural beauty, rich culture, and warm hospitality come together.</p>
+    <div class="buttons"><a class="btn primary" href="#destinations">📍 EXPLORE DESTINATIONS</a><a class="btn outline" href="#video">▷ WATCH VIDEO</a></div>
+  </div>
+
+  <div class="searchbox">
+    <div class="search-item"><label>📍 Where to?</label><span>Search destinations</span></div>
+    <div class="search-item"><label>📅 Check-in</label><span>Select date</span></div>
+    <div class="search-item"><label>📅 Check-out</label><span>Select date</span></div>
+    <div class="search-item"><label>♙ Travelers</label><span>2 Travelers</span></div>
+    <button class="search-btn" onclick="alert('Explore Irosin destinations!')">SEARCH 🔍</button>
+  </div>
+</section>
+
+<section class="destinations" id="destinations">
+  <div>
+    <div class="kicker">TOP DESTINATIONS</div>
+    <h2>Explore Irosin’s Natural Wonders</h2>
+    <p>From pristine beaches to majestic mountains, discover the beautiful places that make Irosin a must-visit destination.</p>
+    <a class="view" href="#">VIEW ALL DESTINATIONS</a>
+  </div>
+  <div class="cards">
+    <article class="card c1"><div class="card-content"><h3>Bulusan Lake</h3><small>📍 Irosin, Sorsogon</small></div></article>
+    <article class="card c2"><div class="card-content"><h3>Matnog Falls</h3><small>📍 Irosin, Sorsogon</small></div></article>
+    <article class="card c3"><div class="card-content"><h3>Subic Beach</h3><small>📍 Sorsogon</small></div></article>
+    <article class="card c4"><div class="card-content"><h3>Bulusan Volcano</h3><small>📍 Sorsogon</small></div></article>
+    <article class="card c5"><div class="card-content"><h3>Irosin Mangrove Park</h3><small>📍 Irosin, Sorsogon</small></div></article>
+  </div>
+</section>
+
+<section class="why" id="about">
+  <div><div class="kicker">WHY VISIT IROSIN?</div><h2>Experience the Best of Local Tourism</h2></div>
+  <div class="feature"><div class="icon">🏔️</div><h3>Breathtaking Nature</h3><p>Explore untouched beaches, waterfalls, lakes, and majestic landscapes.</p></div>
+  <div class="feature"><div class="icon">⛩️</div><h3>Rich Culture</h3><p>Experience local traditions, festivals, and warm hospitality.</p></div>
+  <div class="feature"><div class="icon">🍽️</div><h3>Local Delicacies</h3><p>Savor authentic Bicolano cuisine and local flavors you’ll love.</p></div>
+  <div class="feature"><div class="icon">📷</div><h3>Instagram-Worthy Spots</h3><p>Capture beautiful moments in scenic and picture-perfect locations.</p></div>
+  <div class="feature"><div class="icon">🛡️</div><h3>Safe & Welcoming</h3><p>A peaceful community ready to make your stay comfortable.</p></div>
+</section>
+
+<footer class="footer" id="contact">
+  <span>© 2026 Discover Irosin Tourism. All rights reserved.</span>
+  <span>Explore • Experience • Remember</span>
+</footer>
 </body>
 </html>
